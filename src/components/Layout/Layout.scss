@@ -1,0 +1,12 @@
+.wrapper {
+  min-height: 100vh !important;
+  &-content {
+    position: relative;
+    padding: 24px;
+  }
+}
+.main-content {
+  min-height: calc(100% - 46px);
+  padding: 24px;
+  background-color: #fff;
+}

@@ -1,0 +1,22 @@
+.header {
+  padding: 0 !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff !important;
+  .collapse-btn {
+    font-size: 18px;
+    width: 72px;
+    height: 72px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .ant-menu-submenu {
+    &:hover {
+      background-color: #f9f9fc;
+    }
+  }
+  .username {
+    font-weight: bold;
+  }
+}
