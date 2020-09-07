@@ -4,16 +4,14 @@ import Bread from "./Breadcrumb";
 import Footer from "./Footer";
 import Header from "./Header";
 import "./Layout.scss";
-import Sider from "./Sider";
 
-function MainLayout(props) {
+function UserLayout(props) {
   const [collapsed, setCollapsed] = useState(false);
   const onCollapseChange = () => {
     setCollapsed(!collapsed);
   };
   return (
     <Layout className="wrapper">
-      <Sider collapsed={collapsed} onCollapseChange={onCollapseChange} />
       <Layout>
         <Header collapsed={collapsed} onCollapseChange={onCollapseChange} />
         <Layout.Content className="wrapper-content">
@@ -26,4 +24,4 @@ function MainLayout(props) {
   );
 }
 
-export default MainLayout;
+export default UserLayout;
