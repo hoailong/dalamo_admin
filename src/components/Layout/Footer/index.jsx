@@ -1,12 +1,3 @@
-import React from "react";
-import { Layout } from "antd";
+import UserFooter from "./UserFooter";
 
-function Footer(props) {
-  return (
-    <Layout.Footer style={{ textAlign: "center", backgroundColor: "#fff" }}>
-      Copyright by HoaiPV © 2020
-    </Layout.Footer>
-  );
-}
-
-export default Footer;
+export { UserFooter };
