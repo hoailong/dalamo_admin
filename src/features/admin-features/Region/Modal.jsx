@@ -1,8 +1,8 @@
 import { Form, Input, Modal, Select } from "antd";
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
-import { formItemLayoutHorizontal } from "../../constants/global";
-import { getSlug } from "../../utils/common";
+import { formItemLayoutHorizontal } from "../../../constants/global";
+import { getSlug } from "../../../utils/common";
 
 const { Option } = Select;
 

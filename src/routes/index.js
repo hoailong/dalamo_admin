@@ -6,8 +6,8 @@ import { createBrowserHistory } from "history";
 import UserLayoutRoute from "./LayoutRoute/UserLayoutRoute";
 import AdminLayoutRoute from "./LayoutRoute/AdminLayoutRoute";
 const Login = lazy(() => import("../components/Login"));
-const User = lazy(() => import("../features/User"));
-const Region = lazy(() => import("../features/Region"));
+const User = lazy(() => import("../features/admin-features/User"));
+const Region = lazy(() => import("../features/admin-features/Region"));
 
 function Routes() {
     const history = createBrowserHistory();

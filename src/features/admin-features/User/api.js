@@ -1,4 +1,4 @@
-const { default: axiosClient } = require("../../utils/axiosClient");
+const { default: axiosClient } = require("../../../utils/axiosClient");
 
 const userAPI = {
   getAll: (params) => {
