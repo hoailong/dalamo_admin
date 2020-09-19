@@ -1,26 +1,28 @@
 import React, { lazy } from "react";
-import { Switch, Redirect, Route, Router } from "react-router-dom";
+import { Router } from "react-router-dom";
+import { Switch, Redirect, Route } from "react-router";
 import NotFound from "../components/Layout/NotFound";
 import Alert from "../components/Layout/Alert";
-import { createBrowserHistory } from "history";
-import UserLayoutRoute from "./LayoutRoute/UserLayoutRoute";
-import AdminLayoutRoute from "./LayoutRoute/AdminLayoutRoute";
+import UserRoute from "./LayoutRoute/UserLayoutRoute";
+import AdminRoute from "./LayoutRoute/AdminLayoutRoute";
+import { history } from "./history";
 const Login = lazy(() => import("../components/Login"));
 const User = lazy(() => import("../features/admin-features/User"));
 const Region = lazy(() => import("../features/admin-features/Region"));
+const HomePage = lazy(() => import("../features/user-features/Home"));
 
 function Routes() {
-    const history = createBrowserHistory();
 
     return (
         <Router history={history}>
             <Alert />
             <Switch>
-                <AdminLayoutRoute exact path="/admin/users" component={User} />
-                <AdminLayoutRoute exact path="/admin/regions" component={Region} />
-                <UserLayoutRoute exact path="/users" component={User} />
-                <UserLayoutRoute exact path="/regions" component={Region} />
+                <AdminRoute exact path="/admin/users" component={User} />
+                <AdminRoute exact path="/admin/regions" component={Region} />
+                <UserRoute exact path="/users" component={User} />
+                <UserRoute exact path="/regions" component={Region} />
                 <Route exact path="/login" component={Login} />
+                <UserRoute exact path="/" component={HomePage} />
                 <Route component={NotFound} />
             </Switch>
         </Router>

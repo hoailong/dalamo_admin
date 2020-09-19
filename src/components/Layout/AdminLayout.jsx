@@ -18,7 +18,7 @@ function AdminLayout(props) {
                 <AdminHeader collapsed={collapsed} onCollapseChange={onCollapseChange} />
                 <Layout.Content className="wrapper-content">
                     {/* <Bread /> */}
-                    <div className="main-content">{props.children}</div>
+                    <div className="main-content content-padding">{props.children}</div>
                 </Layout.Content>
             </Layout>
         </Layout>

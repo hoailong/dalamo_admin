@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Redirect, Route, Router } from "react-router-dom";
+import { Route } from "react-router";
 import UserLayout from "../../components/Layout/UserLayout";
 
 function UserLayoutRoute({ component: Component, ...rest }) {

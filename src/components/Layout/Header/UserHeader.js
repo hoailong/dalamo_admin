@@ -4,15 +4,16 @@ import React from "react";
 import "./Header.scss";
 import Images from "../../../constants/images";
 import SubMenu from "antd/lib/menu/SubMenu";
+import { Link } from "react-router-dom";
 
 function UserHeader(props) {
     const { username, collapsed, onCollapseChange } = props;
     return (
         <Layout.Header className="header fixed">
-            <div className="logo">Dalamo</div>
+            <div className="logo">Dalamo logo</div>
             <Menu style={{ width: "100%" }} key="search" mode="horizontal" selectable={false}>
-                <Menu.Item style={{ width: "100%" }} key="search-bar">
-                    <Input.Search size="large" placeholder="Tìm kiếm sản phẩm" />
+                <Menu.Item key="HomePage">
+                    <Link to="/login">Trang chủ</Link>
                 </Menu.Item>
             </Menu>
             <Menu key="user" mode="horizontal" selectable={false}>
