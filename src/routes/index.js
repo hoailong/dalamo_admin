@@ -1,5 +1,5 @@
 import React, { lazy } from "react";
-import { Router } from "react-router-dom";
+import { Router, BrowserRouter } from "react-router-dom";
 import { Switch, Redirect, Route } from "react-router";
 import NotFound from "../components/Layout/NotFound";
 import Alert from "../components/Layout/Alert";
@@ -14,7 +14,7 @@ const HomePage = lazy(() => import("../features/user-features/Home"));
 function Routes() {
 
     return (
-        <Router history={history}>
+        <BrowserRouter>
             <Alert />
             <Switch>
                 <AdminRoute exact path="/admin/users" component={User} />
@@ -25,7 +25,7 @@ function Routes() {
                 <UserRoute exact path="/" component={HomePage} />
                 <Route component={NotFound} />
             </Switch>
-        </Router>
+        </BrowserRouter>
     );
 }
 
