@@ -6,13 +6,14 @@ import { UserHeader } from "./Header";
 import "./Layout.scss";
 
 function UserLayout(props) {
+    const { user, children } = props;
     return (
         <Layout className="wrapper">
             <Layout>
-                <UserHeader />
+                <UserHeader user={user} />
                 <Layout.Content className="wrapper-content white-background">
                     {/* <Bread /> */}
-                    <div className="main-content">{props.children}</div>
+                    <div className="main-content">{children}</div>
                 </Layout.Content>
                 <UserFooter />
             </Layout>
