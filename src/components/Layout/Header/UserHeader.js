@@ -5,7 +5,7 @@ import {
     UserOutlined,
     HomeOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu, Avatar, Tooltip } from "antd";
+import { Layout, Menu, Avatar, Tooltip, Badge } from "antd";
 import React from "react";
 import "./Header.scss";
 import Images from "../../../constants/images";
@@ -13,17 +13,13 @@ import { Link } from "react-router-dom";
 
 function UserHeader(props) {
     const { user } = props;
-    const havingItem = false;
+    const havingItem = true;
     return (
         <Layout.Header className="header fixed">
             <div className="logo">Dalamo logo</div>
             <Menu style={{ width: "100%" }} key="search" mode="horizontal" selectable={false}>
                 <Menu.Item key="HomePage">
-                    <Link to="/">
-                        <Tooltip title="Trang chủ">
-                            <HomeOutlined className="icon--non-margin" />
-                        </Tooltip>
-                    </Link>
+                    <Link to="/">Trang chủ</Link>
                 </Menu.Item>
             </Menu>
             <Menu key="user" mode="horizontal" selectable={false}>
@@ -32,10 +28,12 @@ function UserHeader(props) {
                     icon={
                         havingItem ? (
                             <Tooltip title="Giỏ hàng có 5 sản phẩm">
-                                <ShoppingTwoTone
-                                    twoToneColor="#6da9f7"
-                                    className="icon--non-margin"
-                                />
+                                <Badge count={5}>
+                                    <ShoppingTwoTone
+                                        twoToneColor="#6da9f7"
+                                        className="icon--non-margin"
+                                    />
+                                </Badge>
                             </Tooltip>
                         ) : (
                             <Tooltip title="Giỏ hàng rỗng">

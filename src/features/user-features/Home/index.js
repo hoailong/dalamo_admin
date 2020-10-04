@@ -1,16 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, Carousel, Card, Divider } from "antd";
-import HomeCarousel from "./HomeCarousel";
+import React from "react";
+import { Row } from "antd";
+import Carousel from "./carousel";
+import FeaturedSection from "./featured-section";
+import ProductSection from "./product-section";
 import "./Home.scss";
 
 function HomePage(props) {
     return (
         <>
             <Row>
-                <Col span={24} className="custom-carousel">
-                    <HomeCarousel />
-                </Col>
+                <Carousel />
+            </Row>
+            <Row gutter={10} className="featured-section">
+                <FeaturedSection />
+            </Row>
+            <Row className="product-section">
+                <ProductSection />
             </Row>
         </>
     );

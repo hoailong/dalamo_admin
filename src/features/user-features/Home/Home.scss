@@ -1,7 +1,4 @@
 .custom-carousel {
-    background-image: url("../../../assets/img/carousel-bg.jpg");
-    height: 750px;
-    width: 100%;
     .arrow-button {
         position: absolute;
         z-index: 1;
@@ -16,6 +13,10 @@
         &-right {
             right: 0;
         }
+    }
+    .ant-carousel {
+        background-image: url("../../../assets/img/carousel-bg.jpg");
+        background-size: contain;
     }
     .custom-slide {
         height: 750px;
@@ -50,5 +51,32 @@
                 }
             }
         }
+    }
+}
+
+.featured-section {
+    margin-top: 10px;
+    .ant-card {
+        text-align: center;
+    }
+    .card {
+        &-left {
+            background-color: #ccfbe9;
+        }
+        &-middle {
+            background-color: #f2fbcc;
+        }
+        &-right {
+            background-color: #ddfbcc;
+        }
+        &-title {
+            font-family: "Lobster", cursive;
+        }
+    }
+}
+
+.product-section {
+    .ant-card {
+        margin-top: 16px;
     }
 }

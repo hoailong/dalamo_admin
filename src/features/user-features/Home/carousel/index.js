@@ -1,23 +1,31 @@
 import React, { useRef } from "react";
 import { Row, Col, Carousel, Button } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import "./Home.scss";
+import "../Home.scss";
 
 function HomeCarousel(props) {
     const carousel = useRef(null);
 
     const next = () => {
         carousel.current.next();
-    }
+    };
 
     const prev = () => {
         carousel.current.prev();
-    }
+    };
 
     return (
-        <>
-            <Button className="arrow-button arrow-button-left" icon={<LeftOutlined />} onClick={prev} />
-            <Button className="arrow-button arrow-button-right" icon={<RightOutlined />} onClick={next} />
+        <Col span={24} className="custom-carousel">
+            <Button
+                className="arrow-button arrow-button-left"
+                icon={<LeftOutlined />}
+                onClick={prev}
+            />
+            <Button
+                className="arrow-button arrow-button-right"
+                icon={<RightOutlined />}
+                onClick={next}
+            />
             <Carousel
                 fade
                 speed={2000}
@@ -67,7 +75,7 @@ function HomeCarousel(props) {
                     </Row>
                 </div>
             </Carousel>
-        </>
+        </Col>
     );
 }
 
