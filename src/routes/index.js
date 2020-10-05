@@ -5,7 +5,6 @@ import NotFound from "../components/Layout/NotFound";
 import Alert from "../components/Layout/Alert";
 import UserRoute from "./LayoutRoute/UserLayoutRoute";
 import AdminRoute from "./LayoutRoute/AdminLayoutRoute";
-import { history } from "./history";
 const Login = lazy(() => import("../components/Login"));
 const User = lazy(() => import("../features/admin-features/User"));
 const Region = lazy(() => import("../features/admin-features/Region"));
