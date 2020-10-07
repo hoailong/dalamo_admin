@@ -1,19 +1,28 @@
+import React from "react";
 import {
     ShoppingOutlined,
     ShoppingTwoTone,
     SearchOutlined,
     UserOutlined,
     HomeOutlined,
+    RetweetOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Avatar, Tooltip, Badge } from "antd";
-import React from "react";
+import { useDispatch } from "react-redux";
 import "./Header.scss";
 import Images from "../../../constants/images";
 import { Link } from "react-router-dom";
+import { openModal as openCompareModal } from "../../Modal/Compare/slice";
+import CompareModal from "../../Modal/Compare";
 
 function UserHeader(props) {
     const { user } = props;
-    const havingItem = true;
+    const dispatch = useDispatch();
+
+    const handleOpenCompare = () => {
+        dispatch(openCompareModal());
+    }
+
     return (
         <Layout.Header className="header fixed">
             <div className="logo">Dalamo logo</div>
@@ -26,20 +35,25 @@ function UserHeader(props) {
                 <Menu.Item
                     key="Cart"
                     icon={
-                        havingItem ? (
-                            <Tooltip title="Giỏ hàng có 5 sản phẩm">
-                                <Badge count={5}>
-                                    <ShoppingTwoTone
-                                        twoToneColor="#6da9f7"
-                                        className="icon--non-margin"
-                                    />
-                                </Badge>
-                            </Tooltip>
-                        ) : (
-                            <Tooltip title="Giỏ hàng rỗng">
-                                <ShoppingOutlined className="icon--non-margin" />
-                            </Tooltip>
-                        )
+                        <Tooltip title="Giỏ hàng có 5 sản phẩm">
+                            <Badge count={5}>
+                                <ShoppingTwoTone
+                                    twoToneColor="#6da9f7"
+                                    className="icon--non-margin"
+                                />
+                            </Badge>
+                        </Tooltip>
+                    }
+                />
+                <Menu.Item
+                    onClick={handleOpenCompare}
+                    key="Compare"
+                    icon={
+                        <Tooltip title="Đang so sánh 5 sản phẩm">
+                            <Badge count={5}>
+                                <RetweetOutlined className="icon--non-margin" />
+                            </Badge>
+                        </Tooltip>
                     }
                 />
                 {user ? (
@@ -66,6 +80,7 @@ function UserHeader(props) {
                     </Menu.SubMenu>
                 )}
             </Menu>
+            <CompareModal />
         </Layout.Header>
     );
 }

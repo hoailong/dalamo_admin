@@ -1,14 +1,16 @@
 import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
 import { Button, Card, Carousel, Col, Row } from "antd";
-import { EyeTwoTone, ShoppingCartOutlined } from "@ant-design/icons";
+import { EyeTwoTone, RetweetOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import PlaceHolderImg from "../../assets/img/product-placeholder.png";
 import PlaceHolderImg2 from "../../assets/img/product-placeholder-2.png";
+import { useDispatch } from "react-redux";
+import { addProductToCompare } from "../Modal/Compare/slice";
 
 function ProductCard(props) {
     const { product } = props;
     const carousel = useRef(null);
-
+    const dispatch = useDispatch();
     const [hidden, setHidden] = useState(true);
 
     const handleHovering = () => {
@@ -18,6 +20,10 @@ function ProductCard(props) {
 
     const handleStopHovering = () => {
         setHidden(true);
+    };
+
+    const handleAddCompareProduct = () => {
+        dispatch(addProductToCompare(product));
     };
 
     return (
@@ -57,6 +63,12 @@ function ProductCard(props) {
                                 icon={<ShoppingCartOutlined />}
                             />
                             <Button size="large" shape="circle" icon={<EyeTwoTone />} />
+                            <Button
+                                onClick={handleAddCompareProduct}
+                                size="large"
+                                shape="circle"
+                                icon={<RetweetOutlined />}
+                            />
                         </div>
                     </div>
                 </div>
