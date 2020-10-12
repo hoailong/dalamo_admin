@@ -8,7 +8,7 @@ import {
     RetweetOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Avatar, Tooltip, Badge } from "antd";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./Header.scss";
 import Images from "../../../constants/images";
 import { Link } from "react-router-dom";
@@ -18,10 +18,11 @@ import CompareModal from "../../Modal/Compare";
 function UserHeader(props) {
     const { user } = props;
     const dispatch = useDispatch();
+    const productsCompare = useSelector((state) => state.compare.products);
 
     const handleOpenCompare = () => {
         dispatch(openCompareModal());
-    }
+    };
 
     return (
         <Layout.Header className="header fixed">
@@ -37,10 +38,7 @@ function UserHeader(props) {
                     icon={
                         <Tooltip title="Giỏ hàng có 5 sản phẩm">
                             <Badge count={5}>
-                                <ShoppingTwoTone
-                                    twoToneColor="#6da9f7"
-                                    className="icon--non-margin"
-                                />
+                                <ShoppingTwoTone twoToneColor="#6da9f7" className="icon--non-margin" />
                             </Badge>
                         </Tooltip>
                     }
@@ -49,8 +47,8 @@ function UserHeader(props) {
                     onClick={handleOpenCompare}
                     key="Compare"
                     icon={
-                        <Tooltip title="Đang so sánh 5 sản phẩm">
-                            <Badge count={5}>
+                        <Tooltip title={`Đang so sánh ${productsCompare.length} sản phẩm`}>
+                            <Badge count={productsCompare.length}>
                                 <RetweetOutlined className="icon--non-margin" />
                             </Badge>
                         </Tooltip>

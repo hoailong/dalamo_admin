@@ -10,7 +10,7 @@ function ProductSection(props) {
         },
         {
             name: "Lorem ipsum",
-            price: 100,
+            price: 1010,
         },
         {
             name: "Lorem ipsum",

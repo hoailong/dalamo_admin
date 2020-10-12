@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Button, Alert } from "antd";
+import { Modal, Button, Alert, Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "./slice";
 import { formatVietnameseCurrency } from "../../../utils/common";
@@ -12,19 +12,25 @@ function CompareModal(props) {
         dispatch(closeModal());
     };
 
-    const properties = [
+    const columns = [
         {
             title: "Tên sản phẩm",
+            dataIndex: "name",
             name: "name",
+            key: "name",
         },
         {
             title: "Giá tiền",
+            dataIndex: "price",
             name: "price",
+            key: "price",
+            sorter: (a, b) => a.price - b.price,
         },
     ];
 
     return (
         <Modal
+            width="70%"
             title="So sánh sản phẩm"
             visible={modalState}
             footer={[
@@ -34,20 +40,7 @@ function CompareModal(props) {
             ]}
         >
             {products.length > 0 ? (
-                <table>
-                    {properties.map((property) => (
-                        <tr>
-                            <td>{property["title"]}</td>
-                            {products.map((product) => (
-                                <td>
-                                    {property["name"] === "price"
-                                        ? formatVietnameseCurrency(product[property["name"]])
-                                        : product[property["name"]]}
-                                </td>
-                            ))}
-                        </tr>
-                    ))}
-                </table>
+                <Table dataSource={products} columns={columns} />
             ) : (
                 <Alert
                     description="Chưa có sản phẩm nào để tiến hành so sánh"

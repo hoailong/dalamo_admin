@@ -18,8 +18,6 @@ function Routes() {
             <Switch>
                 <AdminRoute exact path="/admin/users" component={User} />
                 <AdminRoute exact path="/admin/regions" component={Region} />
-                <UserRoute exact path="/users" component={User} />
-                <UserRoute exact path="/regions" component={Region} />
                 <Route exact path="/login" component={Login} />
                 <UserRoute exact path="/" component={HomePage} />
                 <Route component={NotFound} />
