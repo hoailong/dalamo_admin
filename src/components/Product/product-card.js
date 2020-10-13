@@ -7,7 +7,7 @@ import PlaceHolderImg2 from "../../assets/img/product-placeholder-2.png";
 import { useDispatch } from "react-redux";
 import { addProductToCompare } from "../Modal/Compare/slice";
 import { formatVietnameseCurrency } from "../../utils/common";
-
+import "./Product.scss";
 function ProductCard(props) {
     const { product } = props;
     const carousel = useRef(null);
@@ -38,16 +38,16 @@ function ProductCard(props) {
                     <Carousel speed={500} ref={carousel}>
                         <div>
                             <img
+                                className="product-card__img"
                                 alt="Placeholder 1"
                                 src={PlaceHolderImg}
-                                style={{ width: "100%", height: "300px" }}
                             />
                         </div>
                         <div>
                             <img
+                                className="product-card__img"
                                 alt="Placeholder 2"
                                 src={PlaceHolderImg2}
-                                style={{ width: "100%", height: "300px" }}
                             />
                         </div>
                     </Carousel>
