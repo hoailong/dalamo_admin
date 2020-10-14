@@ -5,7 +5,7 @@ import NotFound from "../components/Layout/NotFound";
 import Alert from "../components/Layout/Alert";
 import UserRoute from "./LayoutRoute/UserLayoutRoute";
 import AdminRoute from "./LayoutRoute/AdminLayoutRoute";
-const Login = lazy(() => import("../components/Login"));
+const Login = lazy(() => import("../components/LoginAdmin"));
 const User = lazy(() => import("../features/admin-features/User"));
 const Region = lazy(() => import("../features/admin-features/Region"));
 const HomePage = lazy(() => import("../features/user-features/Home"));
@@ -18,7 +18,7 @@ function Routes() {
             <Switch>
                 <AdminRoute exact path="/admin/users" component={User} />
                 <AdminRoute exact path="/admin/regions" component={Region} />
-                <Route exact path="/login" component={Login} />
+                <Route exact path="/admin/login" component={Login} />
                 <UserRoute exact path="/" component={HomePage} />
                 <Route component={NotFound} />
             </Switch>

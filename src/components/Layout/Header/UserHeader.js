@@ -13,15 +13,21 @@ import "./Header.scss";
 import Images from "../../../constants/images";
 import { Link } from "react-router-dom";
 import { openModal as openCompareModal } from "../../Modal/Compare/slice";
+import { openModal as openLoginModal } from "../../Modal/LoginUser/slice";
 import CompareModal from "../../Modal/Compare";
+import LoginModal from "../../Modal/LoginUser";
 
 function UserHeader(props) {
     const { user } = props;
     const dispatch = useDispatch();
     const productsCompare = useSelector((state) => state.compare.products);
 
-    const handleOpenCompare = () => {
+    const handleOpenCompareModal = () => {
         dispatch(openCompareModal());
+    };
+
+    const handleOpenLoginModal = () => {
+        dispatch(openLoginModal());
     };
 
     return (
@@ -38,13 +44,16 @@ function UserHeader(props) {
                     icon={
                         <Tooltip title="Giỏ hàng có 5 sản phẩm">
                             <Badge count={5}>
-                                <ShoppingTwoTone twoToneColor="#6da9f7" className="icon--non-margin" />
+                                <ShoppingTwoTone
+                                    twoToneColor="#6da9f7"
+                                    className="icon--non-margin"
+                                />
                             </Badge>
                         </Tooltip>
                     }
                 />
                 <Menu.Item
-                    onClick={handleOpenCompare}
+                    onClick={handleOpenCompareModal}
                     key="Compare"
                     icon={
                         <Tooltip title={`Đang so sánh ${productsCompare.length} sản phẩm`}>
@@ -71,14 +80,13 @@ function UserHeader(props) {
                     </Menu.SubMenu>
                 ) : (
                     <Menu.SubMenu icon={<UserOutlined className="icon--non-margin" />}>
-                        <Menu.Item key="Login">
-                            <Link to="/login">Đăng nhập</Link>
-                        </Menu.Item>
+                        <Menu.Item key="Login" onClick={handleOpenLoginModal}>Đăng nhập</Menu.Item>
                         <Menu.Item key="Register">Đăng ký</Menu.Item>
                     </Menu.SubMenu>
                 )}
             </Menu>
             <CompareModal />
+            <LoginModal />
         </Layout.Header>
     );
 }
