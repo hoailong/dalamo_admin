@@ -13,42 +13,46 @@ function LoginModal(props) {
     };
 
     return (
-        <Modal
-            width="50%"
-            visible={modalState}
-            footer={null}
-            closable={false}
-            bodyStyle={{ padding: 0 }}
-        >
+        <Modal width="50%" visible={modalState} footer={null} closable={false} bodyStyle={{ padding: 0 }}>
             <Row>
                 <Col span={12}>
-                    <Tabs
-                        tabBarStyle={{ marginLeft: 15 }}
-                        defaultActiveKey="login"
-                        style={{ height: "100%" }}
-                    >
-                        <Tabs.TabPane tab="Đăng nhập" key="login">
-                            <Form labelCol={{ span: 4, offset: 2 }} wrapperCol={{ span: 16 }}>
-                                <Form.Item label="Email" name="email" required>
-                                    <Input />
+                    <Tabs tabBarStyle={{ marginLeft: 15 }} defaultActiveKey="login" style={{ height: "100%" }}>
+                        <Tabs.TabPane tab="Đăng nhập" key="login" style={{ marginTop: "23%" }}>
+                            <Form wrapperCol={{ span: 16, offset: 4 }}>
+                                <Form.Item
+                                    name="email"
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message: "Không được để trống email",
+                                        },
+                                    ]}
+                                >
+                                    <Input placeholder="Email" />
                                 </Form.Item>
-                                <Form.Item label="Mật khẩu" name="password" required>
-                                    <Input.Password />
+                                <Form.Item name="password" required>
+                                    <Input.Password placeholder="Mật khẩu" />
                                 </Form.Item>
-                                <Form.Item wrapperCol={{ offset: 6, span: 18 }}>
+                                <Form.Item wrapperCol={{ offset: 9, span: 4 }}>
                                     <Button type="primary">Đăng nhập</Button>
                                 </Form.Item>
                             </Form>
                         </Tabs.TabPane>
-                        <Tabs.TabPane tab="Đăng ký" key="register">
-                            <Form labelCol={{ span: 4, offset: 2 }} wrapperCol={{ span: 16 }}>
-                                <Form.Item label="Email" name="email" required>
-                                    <Input />
+                        <Tabs.TabPane tab="Đăng ký" key="register" style={{ marginTop: "10%" }}>
+                            <Form wrapperCol={{ span: 16, offset: 4 }}>
+                                <Form.Item name="fullName" required>
+                                    <Input placeholder="Họ tên" />
                                 </Form.Item>
-                                <Form.Item label="Mật khẩu" name="password" required>
-                                    <Input.Password />
+                                <Form.Item name="email" required>
+                                    <Input placeholder="Email" />
                                 </Form.Item>
-                                <Form.Item wrapperCol={{ offset: 6, span: 18 }}>
+                                <Form.Item name="password" required>
+                                    <Input.Password placeholder="Mật khẩu" required />
+                                </Form.Item>
+                                <Form.Item name="confirmPassword" required>
+                                    <Input.Password placeholder="Xác nhận mật khẩu" required />
+                                </Form.Item>
+                                <Form.Item wrapperCol={{ offset: 9, span: 4 }}>
                                     <Button type="primary">Đăng nhập</Button>
                                 </Form.Item>
                             </Form>
@@ -58,11 +62,7 @@ function LoginModal(props) {
                 <Col span={12} style={{ textAlign: "center", padding: 25 }}>
                     <Popover
                         content={
-                            <a
-                                href="http://www.freepik.com"
-                                rel="noopener noreferrer"
-                                target="_blank"
-                            >
+                            <a href="http://www.freepik.com" rel="noopener noreferrer" target="_blank">
                                 Designed by stories / Freepik
                             </a>
                         }

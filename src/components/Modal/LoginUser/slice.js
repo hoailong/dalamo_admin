@@ -4,7 +4,7 @@ import axios from "../../../utils/axiosClient";
 const { createSlice } = require("@reduxjs/toolkit");
 
 const initState = {
-    modalState: true,
+    modalState: false,
 };
 
 const login = createSlice({
