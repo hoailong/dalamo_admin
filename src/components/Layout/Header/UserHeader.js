@@ -26,8 +26,8 @@ function UserHeader(props) {
         dispatch(openCompareModal());
     };
 
-    const handleOpenLoginModal = () => {
-        dispatch(openLoginModal());
+    const handleOpenLoginModal = (key) => {
+        dispatch(openLoginModal(key));
     };
 
     return (
@@ -80,8 +80,8 @@ function UserHeader(props) {
                     </Menu.SubMenu>
                 ) : (
                     <Menu.SubMenu icon={<UserOutlined className="icon--non-margin" />}>
-                        <Menu.Item key="Login" onClick={handleOpenLoginModal}>Đăng nhập</Menu.Item>
-                        <Menu.Item key="Register">Đăng ký</Menu.Item>
+                        <Menu.Item key="Login" onClick={() => handleOpenLoginModal("login")}>Đăng nhập</Menu.Item>
+                        <Menu.Item key="Register" onClick={() => handleOpenLoginModal("register")}>Đăng ký</Menu.Item>
                     </Menu.SubMenu>
                 )}
             </Menu>

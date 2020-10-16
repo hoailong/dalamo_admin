@@ -5,6 +5,7 @@ const { createSlice } = require("@reduxjs/toolkit");
 
 const initState = {
     modalState: false,
+    defaultActive: "login",
 };
 
 const login = createSlice({
@@ -13,15 +14,19 @@ const login = createSlice({
     reducers: {
         openModal: (state, action) => {
             state.modalState = true;
+            state.defaultActive = action.payload;
         },
         closeModal: (state, action) => {
             state.modalState = false;
         },
+        setDefaultActive: (state, action) => {
+            state.defaultActive = action.payload;
+        }
     },
 });
 
 const { reducer, actions } = login;
-export const { openModal, closeModal} = actions;
+export const { openModal, closeModal, setDefaultActive} = actions;
 
 
 export default reducer;

@@ -1,22 +1,38 @@
 import React, { useEffect } from "react";
 import { Modal, Row, Col, Button, Alert, Form, Input, Tabs, Popover } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { closeModal } from "./slice";
+import { closeModal, setDefaultActive } from "./slice";
 import SkinCare from "../../../assets/img/skin-care.jpg";
 
 function LoginModal(props) {
-    const { modalState } = useSelector((state) => state.login);
+    const { modalState, defaultActive } = useSelector((state) => state.login);
     const dispatch = useDispatch();
 
     const handleCloseModal = () => {
         dispatch(closeModal());
     };
 
+    const handleChangeTab = (key) => {
+        dispatch(setDefaultActive(key));
+    }
+
     return (
-        <Modal width="50%" visible={modalState} footer={null} closable={false} bodyStyle={{ padding: 0 }}>
+        <Modal
+            onCancel={handleCloseModal}
+            width="50%"
+            visible={modalState}
+            footer={null}
+            closable={false}
+            bodyStyle={{ padding: 0 }}
+        >
             <Row>
                 <Col span={12}>
-                    <Tabs tabBarStyle={{ marginLeft: 15 }} defaultActiveKey="login" style={{ height: "100%" }}>
+                    <Tabs
+                        tabBarStyle={{ marginLeft: 15 }}
+                        activeKey={defaultActive}
+                        style={{ height: "100%" }}
+                        onChange={handleChangeTab}
+                    >
                         <Tabs.TabPane tab="Đăng nhập" key="login" style={{ marginTop: "23%" }}>
                             <Form wrapperCol={{ span: 16, offset: 4 }}>
                                 <Form.Item
@@ -38,7 +54,7 @@ function LoginModal(props) {
                                 </Form.Item>
                             </Form>
                         </Tabs.TabPane>
-                        <Tabs.TabPane tab="Đăng ký" key="register" style={{ marginTop: "10%" }}>
+                        <Tabs.TabPane tab="Đăng ký" key="register" style={{ marginTop: "11%" }}>
                             <Form wrapperCol={{ span: 16, offset: 4 }}>
                                 <Form.Item name="fullName" required>
                                     <Input placeholder="Họ tên" />
@@ -62,7 +78,11 @@ function LoginModal(props) {
                 <Col span={12} style={{ textAlign: "center", padding: 25 }}>
                     <Popover
                         content={
-                            <a href="http://www.freepik.com" rel="noopener noreferrer" target="_blank">
+                            <a
+                                href="http://www.freepik.com"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                            >
                                 Designed by stories / Freepik
                             </a>
                         }
