@@ -26,6 +26,36 @@ function CompareModal(props) {
             key: "price",
             sorter: (a, b) => a.price - b.price,
         },
+        {
+            title: "Nhãn hiệu",
+            dataIndex: "brand",
+            name: "brand",
+            key: "brand",
+        },
+        {
+            title: "Xuất xứ",
+            dataIndex: "origin",
+            name: "origin",
+            key: "origin",
+        },
+        {
+            title: "Mô tả",
+            dataIndex: "description",
+            name: "description",
+            key: "description",
+        },
+        {
+            title: "Đặc điểm",
+            dataIndex: "characteristic",
+            name: "characteristic",
+            key: "characteristic",
+        },
+        {
+            title: "Thành phần",
+            dataIndex: "ingredient",
+            name: "ingredient",
+            key: "ingredient",
+        },
     ];
 
     return (
@@ -38,6 +68,7 @@ function CompareModal(props) {
                     Đóng
                 </Button>,
             ]}
+            closable={false}
         >
             {products.length > 0 ? (
                 <Table dataSource={products} columns={columns} />
