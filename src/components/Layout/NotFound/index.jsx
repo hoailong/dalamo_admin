@@ -1,6 +1,5 @@
 import React from "react";
 import "./NotFound.scss";
-import { FrownOutlined } from "@ant-design/icons";
 import { Result, Button } from "antd";
 
 function NotFound(props) {

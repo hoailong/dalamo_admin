@@ -11,10 +11,16 @@ export const parseCurrency = (value) => {
 };
 
 export const formatVietnameseCurrency = (money) => {
-    return money.toLocaleString("vi-VN", {
+    return parseInt(money).toLocaleString("vi-VN", {
         style: "currency",
         currency: "VND",
     });
+};
+
+export const calcDiscountPrice = (money, discountPercent) => {
+    const intM = parseInt(money);
+    const intDP = parseInt(discountPercent);
+    return Math.floor(intM - (intM * intDP) / 100);
 };
 
 export const getSlug = (str) => {

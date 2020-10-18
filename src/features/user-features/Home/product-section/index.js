@@ -1,41 +1,30 @@
+import React, { useEffect } from "react";
 import { Col, Tabs } from "antd";
-import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import ProductCardGrid from "../../../../components/Product/product-card-grid";
+import { fetchHotProducts, fetchNewArrivalProducts, fetchNewProducts } from "../../../../app/slices/product";
 
 function ProductSection(props) {
-    const data = [
-        {
-            name: "Lorem ipsum",
-            price: 100,
-        },
-        {
-            name: "Lorem ipsum",
-            price: 1010,
-        },
-        {
-            name: "Lorem ipsum",
-            price: 100,
-        },
-        {
-            name: "Lorem ipsum",
-            price: 100,
-        },
-        {
-            name: "Lorem ipsum",
-            price: 100,
-        },
-    ];
+    const { hotProducts, newProducts, newArrivalProducts } = useSelector((state) => state.product);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchHotProducts(hotProducts));
+        dispatch(fetchNewProducts(newProducts));
+        dispatch(fetchNewArrivalProducts(newArrivalProducts));
+    }, []);
+
     return (
         <Col span={16} push={4}>
             <Tabs defaultActiveKey="new-arrival">
                 <Tabs.TabPane tab="Hàng mới về" key="new-arrival">
-                    <ProductCardGrid data={data} />
+                    <ProductCardGrid data={hotProducts} />
                 </Tabs.TabPane>
                 <Tabs.TabPane tab="Sản phẩm bán chạy" key="best-seller">
-                    <ProductCardGrid data={data} />
+                    <ProductCardGrid data={newProducts} />
                 </Tabs.TabPane>
                 <Tabs.TabPane tab="Sản phẩm mới" key="new-product">
-                    <ProductCardGrid data={data} />
+                    <ProductCardGrid data={newArrivalProducts} />
                 </Tabs.TabPane>
             </Tabs>
         </Col>
