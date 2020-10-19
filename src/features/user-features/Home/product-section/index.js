@@ -18,13 +18,13 @@ function ProductSection(props) {
         <Col span={16} push={4}>
             <Tabs defaultActiveKey="new-arrival">
                 <Tabs.TabPane tab="Hàng mới về" key="new-arrival">
-                    <ProductCardGrid data={hotProducts} />
+                    <ProductCardGrid data={hotProducts.slice(0,8)} />
                 </Tabs.TabPane>
                 <Tabs.TabPane tab="Sản phẩm bán chạy" key="best-seller">
-                    <ProductCardGrid data={newProducts} />
+                    <ProductCardGrid data={newProducts.slice(0,8)} />
                 </Tabs.TabPane>
                 <Tabs.TabPane tab="Sản phẩm mới" key="new-product">
-                    <ProductCardGrid data={newArrivalProducts} />
+                    <ProductCardGrid data={newArrivalProducts.slice(0,8)} />
                 </Tabs.TabPane>
             </Tabs>
         </Col>

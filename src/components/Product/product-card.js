@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
-import { Badge, Button, Card, Carousel, Col, Row, Tooltip } from "antd";
+import { Button, Card, Carousel, Col, Row, Tooltip } from "antd";
 import { EyeTwoTone, RetweetOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import PlaceHolderImg from "../../assets/img/product-placeholder.png";
 import PlaceHolderImg2 from "../../assets/img/product-placeholder-2.png";
@@ -88,7 +88,7 @@ function ProductCard(props) {
         >
             <Row>
                 <Col span={24}>
-                    <h3>{product["name"]}</h3>
+                    <h4 className="product-card__name">{product["name"]}</h4>
                 </Col>
             </Row>
             <p>

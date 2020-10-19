@@ -1,12 +1,21 @@
-.product-card__img {
-    width: 100%;
-    height: 300px;
-    border: 1px solid #eeecee;
+.product-card {
+    &__img {
+        width: 100%;
+        height: 300px;
+        border: 1px solid #eeecee;
+    }
+
+    &__name {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
 }
 
 .original-price {
-    text-decoration: line-through #FA6BFE;
-    color: #FA6BFE;
+    text-decoration: line-through #fa6bfe;
+    color: #fa6bfe;
 }
 
 .text {
