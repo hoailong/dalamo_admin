@@ -1,14 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Button, Col, Row } from "antd";
+import { Button, Col, Row, Skeleton } from "antd";
 import Carousel from "./carousel";
 import FeaturedSection from "./featured-section";
 import ProductSection from "./product-section";
 import ProductCarousel from "./product-carousel";
+import CommentSection from "./comment-section";
 import "./Home.scss";
 
 function HomePage(props) {
-    const { hotProducts } = useSelector((state) => state.product);
+    const { hotProducts, isLoading } = useSelector((state) => state.product);
 
     return (
         <>
@@ -28,17 +29,39 @@ function HomePage(props) {
                     </Button>
                 </Col>
             </Row>
-            <Row>
+            <Row style={{ marginTop: 150 }}>
                 <Col span={16} push={4}>
                     <h2 className="txt--font-lobster">Sản phẩm nổi bật</h2>
                 </Col>
             </Row>
             <Row
                 gutter={2}
-                style={{ backgroundImage: "linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%)" }}
+                style={{ backgroundColor: "#F6F6F6", paddingTop: 25, paddingBottom: 25 }}
             >
-                <ProductCarousel products={hotProducts.slice(0, Math.floor(hotProducts.length / 2))} />
-                <ProductCarousel products={hotProducts.slice(Math.floor(hotProducts.length / 2))} />
+                <Skeleton loading={isLoading}>
+                    <ProductCarousel
+                        products={hotProducts.slice(0, Math.floor(hotProducts.length / 2))}
+                    />
+                </Skeleton>
+                <Skeleton loading={isLoading}>
+                    <ProductCarousel
+                        products={hotProducts.slice(Math.floor(hotProducts.length / 2))}
+                    />
+                </Skeleton>
+            </Row>
+            <Row style={{ marginTop: 150 }}>
+                <Col span={16} push={4}>
+                    <h2 className="txt--font-lobster">Đánh giá của khách hàng</h2>
+                </Col>
+            </Row>
+            <Row
+                style={{
+                    backgroundColor: "#CCFBE9",
+                    paddingTop: 100,
+                    paddingBottom: 100,
+                }}
+            >
+                <CommentSection />
             </Row>
         </>
     );

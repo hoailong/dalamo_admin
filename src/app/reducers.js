@@ -7,6 +7,7 @@ import loginSlice from "../components/Modal/LoginUser/slice";
 import productSlice from "./slices/product";
 import categorySlice from "./slices/category";
 import cartSlice from "./slices/cart";
+import commentSlice from "./slices/comment";
 
 const rootReducer = combineReducers({
   alerts: alertSlice,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   category: categorySlice,
   cart: cartSlice,
   product: productSlice,
+  comment: commentSlice,
 });
 
 export default rootReducer;

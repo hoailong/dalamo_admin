@@ -9,7 +9,7 @@ import {
     UnorderedListOutlined,
     InboxOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu, Avatar, Tooltip, Badge } from "antd";
+import { Layout, Menu, Avatar, Tooltip, Badge, Skeleton } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import "./Header.scss";
 import Images from "../../../constants/images";
@@ -26,10 +26,10 @@ function UserHeader(props) {
     const dispatch = useDispatch();
     const productsCompare = useSelector((state) => state.compare.products);
     const productsCart = useSelector((state) => state.cart.products);
-    const { categories } = useSelector((state) => state.category);
+    const { categories, isLoading: isLoadingCategory } = useSelector((state) => state.category);
 
     useEffect(() => {
-        dispatch(fetchCategories());
+        dispatch(fetchCategories(categories));
     }, []);
 
     const handleOpenCompareModal = () => {
@@ -52,9 +52,11 @@ function UserHeader(props) {
                     title="Danh mục sản phẩm"
                     icon={<UnorderedListOutlined />}
                 >
-                    {categories.map((category, idx) => (
-                        <Menu.Item key={category["id"]}>{category["name"]}</Menu.Item>
-                    ))}
+                    <Skeleton loading={isLoadingCategory}>
+                        {categories.map((category, idx) => (
+                            <Menu.Item key={category["id"]}>{category["name"]}</Menu.Item>
+                        ))}
+                    </Skeleton>
                 </Menu.SubMenu>
                 <Menu.Item key="HomePage" icon={<HomeOutlined />}>
                     <Link to="/">Trang chủ</Link>
@@ -69,7 +71,10 @@ function UserHeader(props) {
                     icon={
                         <Tooltip title={`Giỏ hàng có ${productsCart.length} sản phẩm`}>
                             <Badge count={productsCart.length}>
-                                <ShoppingTwoTone twoToneColor="#6da9f7" className="icon--non-margin" />
+                                <ShoppingTwoTone
+                                    twoToneColor="#6da9f7"
+                                    className="icon--non-margin"
+                                />
                             </Badge>
                         </Tooltip>
                     }
