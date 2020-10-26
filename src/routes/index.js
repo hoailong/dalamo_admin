@@ -7,6 +7,7 @@ import UserRoute from "./LayoutRoute/UserLayoutRoute";
 import AdminRoute from "./LayoutRoute/AdminLayoutRoute";
 const Login = lazy(() => import("../components/Login"));
 const User = lazy(() => import("../features/admin-features/User"));
+const Category = lazy(() => import("../features/admin-features/Category"));
 const Region = lazy(() => import("../features/admin-features/Region"));
 const HomePage = lazy(() => import("../features/user-features/Home"));
 
@@ -16,8 +17,12 @@ function Routes() {
         <BrowserRouter>
             <Alert />
             <Switch>
+                <Redirect exact path="/admin/" to="/admin/users"/>
                 <AdminRoute exact path="/admin/users" component={User} />
-                <AdminRoute exact path="/admin/regions" component={Region} />
+                <AdminRoute exact path="/admin/products" component={Region} />
+                <AdminRoute exact path="/admin/category" component={Category} />
+                <AdminRoute exact path="/admin/brands" component={Region} />
+                <AdminRoute exact path="/admin/providers" component={Region} />
                 <Route exact path="/login" component={Login} />
                 <UserRoute exact path="/" component={HomePage} />
                 <Route component={NotFound} />
