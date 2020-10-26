@@ -24,9 +24,9 @@ import LoginModal from "../../Modal/LoginUser";
 function UserHeader(props) {
     const { user } = props;
     const dispatch = useDispatch();
-    const productsCompare = useSelector((state) => state.compare.products);
-    const productsCart = useSelector((state) => state.cart.products);
-    const { categories, isLoading: isLoadingCategory } = useSelector((state) => state.category);
+    const productsCompare = useSelector((state) => state.userCompare.products);
+    const productsCart = useSelector((state) => state.userCart.products);
+    const { categories, isLoading: isLoadingCategory } = useSelector((state) => state.userCategory);
 
     useEffect(() => {
         dispatch(fetchCategories(categories));

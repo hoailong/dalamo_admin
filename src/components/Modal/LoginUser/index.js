@@ -5,7 +5,7 @@ import { closeModal, setDefaultActive } from "./slice";
 import SkinCare from "../../../assets/img/skin-care.jpg";
 
 function LoginModal(props) {
-    const { modalState, defaultActive } = useSelector((state) => state.login);
+    const { modalState, defaultActive } = useSelector((state) => state.userLogin);
     const dispatch = useDispatch();
 
     const handleCloseModal = () => {

@@ -5,7 +5,7 @@ import { CommentBig } from "../../../../components/Comment";
 import { fetchComments } from "../../../../app/slices/comment";
 
 function CommentSection(props) {
-    const { comments, isLoading } = useSelector(state => state.comment);
+    const { comments, isLoading } = useSelector(state => state.userComment);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchComments(comments));

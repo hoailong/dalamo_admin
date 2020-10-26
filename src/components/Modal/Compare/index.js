@@ -5,7 +5,7 @@ import { closeModal } from "./slice";
 import { formatVietnameseCurrency } from "../../../utils/common";
 
 function CompareModal(props) {
-    const { modalState, products } = useSelector((state) => state.compare);
+    const { modalState, products } = useSelector((state) => state.userCompare);
     const dispatch = useDispatch();
 
     const handleCloseModal = () => {

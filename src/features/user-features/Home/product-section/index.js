@@ -10,7 +10,7 @@ import {
 
 function ProductSection(props) {
     const { hotProducts, newProducts, newArrivalProducts, isLoading } = useSelector(
-        (state) => state.product
+        (state) => state.userProduct
     );
     const dispatch = useDispatch();
 

@@ -9,7 +9,7 @@ import CommentSection from "./comment-section";
 import "./Home.scss";
 
 function HomePage(props) {
-    const { hotProducts, isLoading } = useSelector((state) => state.product);
+    const { hotProducts, isLoading } = useSelector((state) => state.userProduct);
 
     return (
         <>
