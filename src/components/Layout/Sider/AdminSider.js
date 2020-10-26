@@ -1,6 +1,10 @@
 import {
+    AppstoreOutlined,
+    CopyrightOutlined,
     DashboardOutlined,
     EnvironmentOutlined,
+    ExperimentOutlined,
+    RocketOutlined,
     TeamOutlined,
     UserOutlined,
 } from "@ant-design/icons";
@@ -14,7 +18,8 @@ import "./Sider.scss";
 function AdminSider(props) {
     const location = useLocation();
     const { collapsed, onCollapseChange } = props;
-    const activeMenu = location.pathname.slice(1);
+    const activeMenu = location.pathname.slice(7);
+    console.log(activeMenu);
     return (
         <Layout.Sider width="250" collapsible collapsed={collapsed} onCollapse={onCollapseChange}>
             <div className="brand">
@@ -32,9 +37,21 @@ function AdminSider(props) {
                     <Menu.Item key="dashboard" icon={<DashboardOutlined />}>
                         <Link to="dashboard">Dashboard</Link>
                     </Menu.Item>
-                    <Menu.Item key="regions" icon={<EnvironmentOutlined />}>
-                        <Link to="regions">Khu vực</Link>
+                    <Menu.Item key="products" icon={<ExperimentOutlined />}>
+                        <Link to="products">Sản phẩm</Link>
                     </Menu.Item>
+                    <Menu.Item key="category" icon={<AppstoreOutlined />}>
+                        <Link to="category">Danh mục</Link>
+                    </Menu.Item>
+                    <Menu.Item key="brands" icon={<CopyrightOutlined />}>
+                        <Link to="brands">Nhãn hiệu</Link>
+                    </Menu.Item>
+                    <Menu.Item key="providers" icon={<RocketOutlined />}>
+                        <Link to="providers">Nhà cung cấp</Link>
+                    </Menu.Item>
+                    {/* <Menu.Item key="regions" icon={<EnvironmentOutlined />}>
+                        <Link to="regions">Khu vực</Link>
+                    </Menu.Item> */}
                     <Menu.Item key="users" icon={<UserOutlined />}>
                         <Link to="users">Tài khoản</Link>
                     </Menu.Item>
