@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Modal, Button, Alert, Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { closeModal } from "./slice";
+import { closeModal } from "../../../app/slices/compare";
 import { formatVietnameseCurrency } from "../../../utils/common";
 
 function CompareModal(props) {

@@ -5,7 +5,7 @@ import { EyeTwoTone, RetweetOutlined, ShoppingCartOutlined } from "@ant-design/i
 import PlaceHolderImg from "../../assets/img/product-placeholder.png";
 import PlaceHolderImg2 from "../../assets/img/product-placeholder-2.png";
 import { useDispatch } from "react-redux";
-import { addProductToCompare } from "../Modal/Compare/slice";
+import { addProductToCompare } from "../../app/slices/compare";
 import { addProduct as addProductToCart } from "../../app/slices/cart";
 import { calcDiscountPrice, formatVietnameseCurrency } from "../../utils/common";
 import "./Product.scss";

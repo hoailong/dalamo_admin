@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Modal, Row, Col, Button, Alert, Form, Input, Tabs, Popover } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { closeModal, setDefaultActive } from "./slice";
+import { closeModal, setDefaultActive } from "../../../app/slices/login";
 import SkinCare from "../../../assets/img/skin-care.jpg";
 
 function LoginModal(props) {

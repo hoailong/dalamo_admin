@@ -5,7 +5,7 @@ import { formatVietnameseCurrency } from "../../../../utils/common";
 import PropTypes from "prop-types";
 import { RetweetOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
-import { addProductToCompare } from "../../../../components/Modal/Compare/slice";
+import { addProductToCompare } from "../../../../app/slices/compare";
 import { addProduct as addProductToCart } from "../../../../app/slices/cart";
 
 function ProductCarousel(props) {

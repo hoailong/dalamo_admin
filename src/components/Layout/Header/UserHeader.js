@@ -15,11 +15,11 @@ import "./Header.scss";
 import Images from "../../../constants/images";
 import Logo from "../../../assets/img/logo.png";
 import { Link } from "react-router-dom";
-import { openModal as openCompareModal } from "../../Modal/Compare/slice";
-import { openModal as openLoginModal } from "../../Modal/LoginUser/slice";
+import { openModal as openCompareModal } from "../../../app/slices/compare";
+import { openModal as openLoginModal } from "../../../app/slices/login";
 import { fetchCategories } from "../../../app/slices/category";
-import CompareModal from "../../Modal/Compare";
-import LoginModal from "../../Modal/LoginUser";
+import CompareModal from "../../../features/user-features/Compare";
+import LoginModal from "../../../features/user-features/Login";
 
 function UserHeader(props) {
     const { user } = props;
