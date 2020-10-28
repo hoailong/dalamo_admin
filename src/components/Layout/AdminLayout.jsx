@@ -1,7 +1,6 @@
 import { Layout } from "antd";
 import React, { useState } from "react";
 import Bread from "./Breadcrumb";
-import Footer from "./Footer";
 import { AdminHeader } from "./Header";
 import "./Layout.scss";
 import { AdminSider } from "./Sider";

@@ -3,13 +3,11 @@ import { Router, BrowserRouter } from "react-router-dom";
 import { Switch, Redirect, Route } from "react-router";
 import NotFound from "../components/Layout/NotFound";
 import Alert from "../components/Layout/Alert";
-import UserRoute from "./LayoutRoute/UserLayoutRoute";
 import AdminRoute from "./LayoutRoute/AdminLayoutRoute";
 const Login = lazy(() => import("../components/LoginAdmin"));
 const User = lazy(() => import("../features/admin-features/User"));
 const Category = lazy(() => import("../features/admin-features/Category"));
 const Region = lazy(() => import("../features/admin-features/Region"));
-const HomePage = lazy(() => import("../features/user-features/Home"));
 
 function Routes() {
 
@@ -24,7 +22,6 @@ function Routes() {
                 <AdminRoute exact path="/admin/brands" component={Region} />
                 <AdminRoute exact path="/admin/providers" component={Region} />
                 <Route exact path="/login" component={Login} />
-                <UserRoute exact path="/" component={HomePage} />
                 <Route component={NotFound} />
             </Switch>
         </BrowserRouter>
