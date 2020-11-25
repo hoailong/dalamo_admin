@@ -34,13 +34,13 @@ const region = createSlice({
     editRegion: (state, action) => {
       state.isCompleted = true;
       state.regions = state.regions.map((region) =>
-        region._id === action.payload._id ? action.payload : region
+        region.id === action.payload.id ? action.payload : region
       );
     },
     removeRegion: (state, action) => {
       state.isCompleted = true;
       state.regions = state.regions.filter(
-        (region) => region._id !== action.payload._id
+        (region) => region.id !== action.payload.id
       );
     },
   },

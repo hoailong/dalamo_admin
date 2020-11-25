@@ -78,7 +78,7 @@ function ListRegion(props) {
       loading={loading}
       columns={columns}
       dataSource={dataSource}
-      rowKey={(record) => record._id}
+      rowKey={(record) => record.id}
       onChange={onPageChange}
     />
   );

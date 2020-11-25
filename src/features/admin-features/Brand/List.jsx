@@ -2,7 +2,7 @@ import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, Modal, Space, Table, Tag } from "antd";
 import React from "react";
 
-function ListCategory(props) {
+function ListBrand(props) {
   const { dataSource, loading, onEditItem, onDeleteItem, onPageChange } = props;
 
   const handleEditClick = (record) => {
@@ -11,8 +11,8 @@ function ListCategory(props) {
 
   const handleDeleteClick = (record) => {
     Modal.confirm({
-      title: `Xác nhận xoá danh mục sản phẩm`,
-      content: `Bạn có chắc chắn muốn xoá danh mục sản phẩm này?`,
+      title: `Xác nhận xoá nhãn hiệu`,
+      content: `Bạn có chắc chắn muốn xoá nhãn hiệu này?`,
       onOk: () => onDeleteItem(record),
       centered: true,
     });
@@ -84,4 +84,4 @@ function ListCategory(props) {
   );
 }
 
-export default ListCategory;
+export default ListBrand;

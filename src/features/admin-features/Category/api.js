@@ -17,7 +17,7 @@ const categoryAPI = {
   },
 
   update: (category) => {
-    const url = `category/${category._id}`;
+    const url = `category/${category.id}`;
     return axiosClient.put(url, category);
   },
 

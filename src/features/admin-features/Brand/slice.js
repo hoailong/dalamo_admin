@@ -1,18 +1,18 @@
-import categoryAPI from "./api";
+import brandAPI from "./api";
 import { toast } from "react-toastify";
 
 const { createSlice } = require("@reduxjs/toolkit");
 
-const initialCategory = {
-  category: [],
+const initialBrand = {
+  brand: [],
   isLoading: false,
   isProcessing: false,
   isCompleted: false,
 };
 
-const category = createSlice({
-  name: "category",
-  initialState: initialCategory,
+const brand = createSlice({
+  name: "brand",
+  initialState: initialBrand,
   reducers: {
     setIsLoading: (state, action) => {
       state.isLoading = action.payload;
@@ -24,46 +24,46 @@ const category = createSlice({
     setIsCompleted: (state, action) => {
       state.isCompleted = action.payload;
     },
-    setCategory: (state, action) => {
-      state.category = action.payload;
+    setBrand: (state, action) => {
+      state.brand = action.payload;
     },
-    addCategory: (state, action) => {
+    addBrand: (state, action) => {
       state.isCompleted = true;
-      state.category.push(action.payload);
+      state.brand.push(action.payload);
     },
-    editCategory: (state, action) => {
+    editBrand: (state, action) => {
       state.isCompleted = true;
-      state.category = state.category.map((category) =>
-        category.id === action.payload.id ? action.payload : category
+      state.brand = state.brand.map((brand) =>
+        brand.id === action.payload.id ? action.payload : brand
       );
     },
-    removeCategory: (state, action) => {
+    removeBrand: (state, action) => {
       state.isCompleted = true;
-      state.category = state.category.filter(
-        (category) => category.id !== action.payload.id
+      state.brand = state.brand.filter(
+        (brand) => brand.id !== action.payload.id
       );
     },
   },
 });
 
-const { reducer, actions } = category;
+const { reducer, actions } = brand;
 
 export const {
   setIsLoading,
   setIsCompleted,
   setIsProcessing,
-  setCategory,
-  addCategory,
-  editCategory,
-  removeCategory,
+  setBrand,
+  addBrand,
+  editBrand,
+  removeBrand,
 } = actions;
 
-export const fetchCategory = () => {
+export const fetchBrand = () => {
   return async (dispatch) => {
     dispatch(setIsLoading(true));
     try {
-      const data = await categoryAPI.getAll();
-      dispatch(setCategory(data));
+      const data = await brandAPI.getAll();
+      dispatch(setBrand(data));
       dispatch(setIsLoading(false));
     } catch (err) {
       console.log(err);
@@ -73,15 +73,15 @@ export const fetchCategory = () => {
     }
   };
 };
-export const createCategory = (category) => {
+export const createBrand = (brand) => {
   return async (dispatch) => {
     dispatch(setIsProcessing(true));
     try {
-      const data = await categoryAPI.create(category);
+      const data = await brandAPI.create(brand);
       if (data.error) {
         toast.error(data.error);
       } else {
-        dispatch(addCategory(data));
+        dispatch(addBrand(data));
         toast.success("Thêm mới thành công!");
       }
     } catch (err) {
@@ -92,15 +92,15 @@ export const createCategory = (category) => {
     }
   };
 };
-export const updateCategory = (category) => {
+export const updateBrand = (brand) => {
   return async (dispatch) => {
     dispatch(setIsProcessing(true));
     try {
-      const data = await categoryAPI.update(category);
+      const data = await brandAPI.update(brand);
       if (data.error) {
         toast.error(data.error);
       } else {
-        dispatch(editCategory(data));
+        dispatch(editBrand(data));
         toast.success("Cập nhật thành công!");
       }
     } catch (err) {
@@ -111,12 +111,12 @@ export const updateCategory = (category) => {
     }
   };
 };
-export const deleteCategory = (id) => {
+export const deleteBrand = (id) => {
   return async (dispatch) => {
     dispatch(setIsProcessing(true));
     try {
-      const data = await categoryAPI.delete(id);
-      dispatch(removeCategory(data));
+      const data = await brandAPI.delete(id);
+      dispatch(removeBrand(data));
       toast.success("Xóa thành công!");
     } catch (err) {
       console.log(err);

@@ -3,33 +3,33 @@ import { Button, Divider, Row } from "antd";
 import Title from "antd/lib/typography/Title";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ListCategory from "./List";
-import CategoryModal from "./Modal";
+import ListProvider from "./List";
+import ProviderModal from "./Modal";
 import {
-  createCategory,
-  deleteCategory,
-  fetchCategory,
+  createProvider,
+  deleteProvider,
+  fetchProvider,
   setIsProcessing,
-  updateCategory,
+  updateProvider,
 } from "./slice";
 
-function Category(props) {
+function Provider(props) {
   const dispatch = useDispatch();
-  const { category, isLoading, isProcessing, isCompleted } = useSelector(
-    (state) => state.category
+  const { provider, isLoading, isProcessing, isCompleted } = useSelector(
+    (state) => state.provider
   );
 
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectingCategory, setSelectingCategory] = useState(null);
+  const [selectingProvider, setSelectingProvider] = useState(null);
 
   useEffect(() => {
-    dispatch(fetchCategory());
+    dispatch(fetchProvider());
   }, [dispatch]);
 
   useEffect(() => {
     if (isCompleted) {
       setModalOpen(false);
-      setSelectingCategory(null);
+      setSelectingProvider(null);
     }
   }, [isCompleted]);
 
@@ -37,27 +37,27 @@ function Category(props) {
     setModalOpen(true);
   };
 
-  const onEditItem = (category) => {
-    setSelectingCategory(category);
+  const onEditItem = (provider) => {
+    setSelectingProvider(provider);
     setModalOpen(true);
   };
 
   const handleCancel = () => {
     setModalOpen(false);
-    setSelectingCategory(null);
+    setSelectingProvider(null);
     dispatch(setIsProcessing(false));
   };
 
-  const onDeleteItem = (category) => {
-    dispatch(deleteCategory(category.id));
+  const onDeleteItem = (provider) => {
+    dispatch(deleteProvider(provider.id));
   };
 
-  const handleSubmit = (category) => {
-    if (category.id) {
-      dispatch(updateCategory(category));
+  const handleSubmit = (provider) => {
+    if (provider.id) {
+      dispatch(updateProvider(provider));
     } else {
-      dispatch(createCategory(category));
-      // setSelectingCategory(category);
+      dispatch(createProvider(provider));
+      // setSelectingProvider(provider);
     }
   };
 
@@ -69,30 +69,30 @@ function Category(props) {
     <>
       <div>
         <Row justify="space-between" align="middle">
-          <Title level={2}>Quản Lý Danh Mục Sản Phẩm</Title>
+          <Title level={2}>Quản Lý Nhà Cung Cấp</Title>
           <Button type="primary" icon={<PlusOutlined />} onClick={onCreateItem}>
             Thêm mới
           </Button>
         </Row>
         <Divider />{" "}
-        <ListCategory
+        <ListProvider
           loading={isLoading}
-          dataSource={category}
+          dataSource={provider}
           onEditItem={onEditItem}
           onDeleteItem={onDeleteItem}
           onChangePage={onChangePage}
         />
-        <CategoryModal
+        <ProviderModal
           visible={modalOpen}
           isProcessing={isProcessing}
           handleSubmit={handleSubmit}
           handleCancel={handleCancel}
-          category={selectingCategory}
-          key={selectingCategory ? selectingCategory["id"] : "_category"}
+          provider={selectingProvider}
+          key={selectingProvider ? selectingProvider["id"] : "_provider"}
         />
       </div>
     </>
   );
 }
 
-export default Category;
+export default Provider;

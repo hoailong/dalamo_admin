@@ -2,7 +2,7 @@ import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, Modal, Space, Table, Tag } from "antd";
 import React from "react";
 
-function ListCategory(props) {
+function ListProvider(props) {
   const { dataSource, loading, onEditItem, onDeleteItem, onPageChange } = props;
 
   const handleEditClick = (record) => {
@@ -11,8 +11,8 @@ function ListCategory(props) {
 
   const handleDeleteClick = (record) => {
     Modal.confirm({
-      title: `Xác nhận xoá danh mục sản phẩm`,
-      content: `Bạn có chắc chắn muốn xoá danh mục sản phẩm này?`,
+      title: `Xác nhận xoá nhà cung cấp`,
+      content: `Bạn có chắc chắn muốn xoá nhà cung cấp này?`,
       onOk: () => onDeleteItem(record),
       centered: true,
     });
@@ -30,9 +30,26 @@ function ListCategory(props) {
       sorter: (a, b) => a.name.localeCompare(b.name),
     },
     {
-      title: "Slug",
-      dataIndex: "slug",
-      sorter: (a, b) => a.slug.length - b.slug.length,
+      title: "Phone",
+      dataIndex: "phone",
+      // defaultSortOrder: "ascend",
+      sorter: (a, b) => a.phone.localeCompare(b.phone),
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+      // defaultSortOrder: "ascend",
+      sorter: (a, b) => a.email.localeCompare(b.email),
+    },
+    {
+      title: "Address",
+      dataIndex: "address",
+      sorter: (a, b) => a.address.length - b.address.length,
+    },
+    {
+      title: "Description",
+      dataIndex: "description",
+      sorter: (a, b) => a.description.length - b.description.length,
     },
     {
       title: "Status",
@@ -84,4 +101,4 @@ function ListCategory(props) {
   );
 }
 
-export default ListCategory;
+export default ListProvider;

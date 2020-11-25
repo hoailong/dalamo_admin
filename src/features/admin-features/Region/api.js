@@ -17,7 +17,7 @@ const regionAPI = {
   },
 
   update: (region) => {
-    const url = `regions/${region._id}`;
+    const url = `regions/${region.id}`;
     return axiosClient.put(url, region);
   },
 

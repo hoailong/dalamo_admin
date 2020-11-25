@@ -2,8 +2,15 @@ import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, Modal, Space, Table, Tag } from "antd";
 import React from "react";
 
-function ListCategory(props) {
-  const { dataSource, loading, onEditItem, onDeleteItem, onPageChange } = props;
+function ListProduct(props) {
+  const {
+    dataSource,
+    loading,
+    onEditItem,
+    onDeleteItem,
+    onPageChange,
+    categories,
+  } = props;
 
   const handleEditClick = (record) => {
     onEditItem(record);
@@ -11,8 +18,8 @@ function ListCategory(props) {
 
   const handleDeleteClick = (record) => {
     Modal.confirm({
-      title: `Xác nhận xoá danh mục sản phẩm`,
-      content: `Bạn có chắc chắn muốn xoá danh mục sản phẩm này?`,
+      title: `Xác nhận xoá sản phẩm`,
+      content: `Bạn có chắc chắn muốn xoá sản phẩm này?`,
       onOk: () => onDeleteItem(record),
       centered: true,
     });
@@ -24,15 +31,25 @@ function ListCategory(props) {
       render: (text, record, index) => index + 1,
     },
     {
-      title: "Name",
+      title: "Tên SP",
       dataIndex: "name",
       // defaultSortOrder: "ascend",
       sorter: (a, b) => a.name.localeCompare(b.name),
+      // ellipsis: true,
     },
     {
-      title: "Slug",
-      dataIndex: "slug",
-      sorter: (a, b) => a.slug.length - b.slug.length,
+      title: "Danh mục",
+      dataIndex: "idCategory",
+      // sorter: (a, b) => a.category.localeCompare(b.category),
+      render: (idCategory) => {
+        const category = categories.find((e) => e.id === idCategory);
+        return category ? category.name : "";
+      },
+    },
+    {
+      title: "Giá",
+      dataIndex: "price",
+      sorter: (a, b) => a.price - b.price,
     },
     {
       title: "Status",
@@ -84,4 +101,4 @@ function ListCategory(props) {
   );
 }
 
-export default ListCategory;
+export default ListProduct;

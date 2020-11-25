@@ -1,18 +1,18 @@
-import categoryAPI from "./api";
+import providerAPI from "./api";
 import { toast } from "react-toastify";
 
 const { createSlice } = require("@reduxjs/toolkit");
 
-const initialCategory = {
-  category: [],
+const initialProvider = {
+  provider: [],
   isLoading: false,
   isProcessing: false,
   isCompleted: false,
 };
 
-const category = createSlice({
-  name: "category",
-  initialState: initialCategory,
+const provider = createSlice({
+  name: "provider",
+  initialState: initialProvider,
   reducers: {
     setIsLoading: (state, action) => {
       state.isLoading = action.payload;
@@ -24,46 +24,46 @@ const category = createSlice({
     setIsCompleted: (state, action) => {
       state.isCompleted = action.payload;
     },
-    setCategory: (state, action) => {
-      state.category = action.payload;
+    setProvider: (state, action) => {
+      state.provider = action.payload;
     },
-    addCategory: (state, action) => {
+    addProvider: (state, action) => {
       state.isCompleted = true;
-      state.category.push(action.payload);
+      state.provider.push(action.payload);
     },
-    editCategory: (state, action) => {
+    editProvider: (state, action) => {
       state.isCompleted = true;
-      state.category = state.category.map((category) =>
-        category.id === action.payload.id ? action.payload : category
+      state.provider = state.provider.map((provider) =>
+        provider.id === action.payload.id ? action.payload : provider
       );
     },
-    removeCategory: (state, action) => {
+    removeProvider: (state, action) => {
       state.isCompleted = true;
-      state.category = state.category.filter(
-        (category) => category.id !== action.payload.id
+      state.provider = state.provider.filter(
+        (provider) => provider.id !== action.payload.id
       );
     },
   },
 });
 
-const { reducer, actions } = category;
+const { reducer, actions } = provider;
 
 export const {
   setIsLoading,
   setIsCompleted,
   setIsProcessing,
-  setCategory,
-  addCategory,
-  editCategory,
-  removeCategory,
+  setProvider,
+  addProvider,
+  editProvider,
+  removeProvider,
 } = actions;
 
-export const fetchCategory = () => {
+export const fetchProvider = () => {
   return async (dispatch) => {
     dispatch(setIsLoading(true));
     try {
-      const data = await categoryAPI.getAll();
-      dispatch(setCategory(data));
+      const data = await providerAPI.getAll();
+      dispatch(setProvider(data));
       dispatch(setIsLoading(false));
     } catch (err) {
       console.log(err);
@@ -73,15 +73,15 @@ export const fetchCategory = () => {
     }
   };
 };
-export const createCategory = (category) => {
+export const createProvider = (provider) => {
   return async (dispatch) => {
     dispatch(setIsProcessing(true));
     try {
-      const data = await categoryAPI.create(category);
+      const data = await providerAPI.create(provider);
       if (data.error) {
         toast.error(data.error);
       } else {
-        dispatch(addCategory(data));
+        dispatch(addProvider(data));
         toast.success("Thêm mới thành công!");
       }
     } catch (err) {
@@ -92,15 +92,15 @@ export const createCategory = (category) => {
     }
   };
 };
-export const updateCategory = (category) => {
+export const updateProvider = (provider) => {
   return async (dispatch) => {
     dispatch(setIsProcessing(true));
     try {
-      const data = await categoryAPI.update(category);
+      const data = await providerAPI.update(provider);
       if (data.error) {
         toast.error(data.error);
       } else {
-        dispatch(editCategory(data));
+        dispatch(editProvider(data));
         toast.success("Cập nhật thành công!");
       }
     } catch (err) {
@@ -111,12 +111,12 @@ export const updateCategory = (category) => {
     }
   };
 };
-export const deleteCategory = (id) => {
+export const deleteProvider = (id) => {
   return async (dispatch) => {
     dispatch(setIsProcessing(true));
     try {
-      const data = await categoryAPI.delete(id);
-      dispatch(removeCategory(data));
+      const data = await providerAPI.delete(id);
+      dispatch(removeProvider(data));
       toast.success("Xóa thành công!");
     } catch (err) {
       console.log(err);

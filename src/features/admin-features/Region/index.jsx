@@ -49,11 +49,11 @@ function Region(props) {
   };
 
   const onDeleteItem = (region) => {
-    dispatch(deleteRegion(region._id));
+    dispatch(deleteRegion(region.id));
   };
 
   const handleSubmit = (region) => {
-    if (region._id) {
+    if (region.id) {
       dispatch(updateRegion(region));
     } else {
       dispatch(createRegion(region));
@@ -88,7 +88,7 @@ function Region(props) {
           handleSubmit={handleSubmit}
           handleCancel={handleCancel}
           region={selectingRegion}
-          key={selectingRegion ? selectingRegion["_id"] : "_region"}
+          key={selectingRegion ? selectingRegion["id"] : "_region"}
         />
       </div>
     </>

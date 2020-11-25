@@ -1,18 +1,18 @@
-import categoryAPI from "./api";
+import productAPI from "./api";
 import { toast } from "react-toastify";
 
 const { createSlice } = require("@reduxjs/toolkit");
 
-const initialCategory = {
-  category: [],
+const initialProduct = {
+  product: [],
   isLoading: false,
   isProcessing: false,
   isCompleted: false,
 };
 
-const category = createSlice({
-  name: "category",
-  initialState: initialCategory,
+const product = createSlice({
+  name: "product",
+  initialState: initialProduct,
   reducers: {
     setIsLoading: (state, action) => {
       state.isLoading = action.payload;
@@ -24,46 +24,46 @@ const category = createSlice({
     setIsCompleted: (state, action) => {
       state.isCompleted = action.payload;
     },
-    setCategory: (state, action) => {
-      state.category = action.payload;
+    setProduct: (state, action) => {
+      state.product = action.payload;
     },
-    addCategory: (state, action) => {
+    addProduct: (state, action) => {
       state.isCompleted = true;
-      state.category.push(action.payload);
+      state.product.push(action.payload);
     },
-    editCategory: (state, action) => {
+    editProduct: (state, action) => {
       state.isCompleted = true;
-      state.category = state.category.map((category) =>
-        category.id === action.payload.id ? action.payload : category
+      state.product = state.product.map((product) =>
+        product.id === action.payload.id ? action.payload : product
       );
     },
-    removeCategory: (state, action) => {
+    removeProduct: (state, action) => {
       state.isCompleted = true;
-      state.category = state.category.filter(
-        (category) => category.id !== action.payload.id
+      state.product = state.product.filter(
+        (product) => product.id !== action.payload.id
       );
     },
   },
 });
 
-const { reducer, actions } = category;
+const { reducer, actions } = product;
 
 export const {
   setIsLoading,
   setIsCompleted,
   setIsProcessing,
-  setCategory,
-  addCategory,
-  editCategory,
-  removeCategory,
+  setProduct,
+  addProduct,
+  editProduct,
+  removeProduct,
 } = actions;
 
-export const fetchCategory = () => {
+export const fetchProduct = () => {
   return async (dispatch) => {
     dispatch(setIsLoading(true));
     try {
-      const data = await categoryAPI.getAll();
-      dispatch(setCategory(data));
+      const data = await productAPI.getAll();
+      dispatch(setProduct(data));
       dispatch(setIsLoading(false));
     } catch (err) {
       console.log(err);
@@ -73,15 +73,15 @@ export const fetchCategory = () => {
     }
   };
 };
-export const createCategory = (category) => {
+export const createProduct = (product) => {
   return async (dispatch) => {
     dispatch(setIsProcessing(true));
     try {
-      const data = await categoryAPI.create(category);
+      const data = await productAPI.create(product);
       if (data.error) {
         toast.error(data.error);
       } else {
-        dispatch(addCategory(data));
+        dispatch(addProduct(data));
         toast.success("Thêm mới thành công!");
       }
     } catch (err) {
@@ -92,15 +92,15 @@ export const createCategory = (category) => {
     }
   };
 };
-export const updateCategory = (category) => {
+export const updateProduct = (id, product) => {
   return async (dispatch) => {
     dispatch(setIsProcessing(true));
     try {
-      const data = await categoryAPI.update(category);
+      const data = await productAPI.update(id, product);
       if (data.error) {
         toast.error(data.error);
       } else {
-        dispatch(editCategory(data));
+        dispatch(editProduct(data));
         toast.success("Cập nhật thành công!");
       }
     } catch (err) {
@@ -111,12 +111,12 @@ export const updateCategory = (category) => {
     }
   };
 };
-export const deleteCategory = (id) => {
+export const deleteProduct = (id) => {
   return async (dispatch) => {
     dispatch(setIsProcessing(true));
     try {
-      const data = await categoryAPI.delete(id);
-      dispatch(removeCategory(data));
+      const data = await productAPI.delete(id);
+      dispatch(removeProduct(data));
       toast.success("Xóa thành công!");
     } catch (err) {
       console.log(err);
