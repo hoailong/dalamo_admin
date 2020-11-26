@@ -1,35 +1,35 @@
 import React, { lazy } from "react";
-import { Router, BrowserRouter } from "react-router-dom";
-import { Switch, Redirect, Route } from "react-router";
-import NotFound from "../components/Layout/NotFound";
+import { Redirect, Route, Switch } from "react-router";
+import { BrowserRouter } from "react-router-dom";
+import MainLayout from "../components/Layout";
 import Alert from "../components/Layout/Alert";
-import UserRoute from "./LayoutRoute/UserLayoutRoute";
-import AdminRoute from "./LayoutRoute/AdminLayoutRoute";
+import NotFound from "../components/Layout/NotFound";
 const Login = lazy(() => import("../components/Login"));
-const User = lazy(() => import("../features/admin-features/User"));
-const Category = lazy(() => import("../features/admin-features/Category"));
-const Product = lazy(() => import("../features/admin-features/Product"));
-const Brand = lazy(() => import("../features/admin-features/Brand"));
-const Provider = lazy(() => import("../features/admin-features/Provider"));
-const Region = lazy(() => import("../features/admin-features/Region"));
-const HomePage = lazy(() => import("../features/user-features/Home"));
+const User = lazy(() => import("../features/User"));
+const Category = lazy(() => import("../features/Category"));
+const Product = lazy(() => import("../features/Product"));
+const Brand = lazy(() => import("../features/Brand"));
+const Provider = lazy(() => import("../features/Provider"));
+const Region = lazy(() => import("../features/Region"));
 
 function Routes() {
   return (
     <BrowserRouter>
       <Alert />
-      <Switch>
-        <Redirect exact path="/admin/" to="/admin/product" />
-        <AdminRoute exact path="/admin/users" component={User} />
-        <AdminRoute exact path="/admin/product" component={Product} />
-        <AdminRoute exact path="/admin/category" component={Category} />
-        <AdminRoute exact path="/admin/brand" component={Brand} />
-        <AdminRoute exact path="/admin/provider" component={Provider} />
-        <AdminRoute exact path="/admin/providers" component={Region} />
-        <Route exact path="/login" component={Login} />
-        <UserRoute exact path="/" component={HomePage} />
-        <Route component={NotFound} />
-      </Switch>
+      <MainLayout>
+        <Switch>
+          {/* <Redirect exact path="/" to="/product" /> */}
+          <Route exact path="/" component={Login} />
+          <Route exact path="/users" component={User} />
+          <Route exact path="/product" component={Product} />
+          <Route exact path="/category" component={Category} />
+          <Route exact path="/brand" component={Brand} />
+          <Route exact path="/provider" component={Provider} />
+          <Route exact path="/providers" component={Region} />
+          <Route exact path="/login" component={Login} />
+          <Route component={NotFound} />
+        </Switch>
+      </MainLayout>
     </BrowserRouter>
   );
 }
