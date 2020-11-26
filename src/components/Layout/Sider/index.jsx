@@ -69,12 +69,12 @@ function Sider(props) {
           </Menu.Item>
         </Menu.ItemGroup>
 
-        <Menu.ItemGroup title="">
+        {/* <Menu.ItemGroup title="">
           <SubMenu key="sub1" icon={<TeamOutlined />} title="Sub Menu">
             <Menu.Item key="9">Team 1</Menu.Item>
             <Menu.Item key="10">Team 2</Menu.Item>
           </SubMenu>
-        </Menu.ItemGroup>
+        </Menu.ItemGroup> */}
       </Menu>{" "}
     </Layout.Sider>
   );

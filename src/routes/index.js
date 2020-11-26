@@ -5,6 +5,7 @@ import MainLayout from "../components/Layout";
 import Alert from "../components/Layout/Alert";
 import NotFound from "../components/Layout/NotFound";
 const Login = lazy(() => import("../components/Login"));
+const Dashboard = lazy(() => import("../features/Dashboard"));
 const User = lazy(() => import("../features/User"));
 const Customer = lazy(() => import("../features/Customer"));
 const Category = lazy(() => import("../features/Category"));
@@ -21,8 +22,9 @@ function Routes() {
       <Alert />
       <MainLayout>
         <Switch>
-          <Redirect exact path="/" to="/product" />
-          {/* <Route exact path="/" component={product} /> */}
+          {/* <Redirect exact path="/" to="/product" /> */}
+          <Route exact path="/" component={Dashboard} />
+          <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/users" component={User} />
           <Route exact path="/customer" component={Customer} />
           <Route exact path="/product" component={Product} />
