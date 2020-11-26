@@ -24,7 +24,7 @@ function ListCategory(props) {
       render: (text, record, index) => index + 1,
     },
     {
-      title: "Name",
+      title: "Tên",
       dataIndex: "name",
       // defaultSortOrder: "ascend",
       sorter: (a, b) => a.name.localeCompare(b.name),
@@ -35,7 +35,7 @@ function ListCategory(props) {
       sorter: (a, b) => a.slug.length - b.slug.length,
     },
     {
-      title: "Status",
+      title: "Trạng thái",
       dataIndex: "status",
       width: "15%",
       sorter: (a, b) => a.status - b.status,
@@ -47,7 +47,7 @@ function ListCategory(props) {
         ),
     },
     {
-      title: "Action",
+      title: "Hành động",
       width: "15%",
       render: (record) => (
         <Space size="middle">

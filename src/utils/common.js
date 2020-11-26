@@ -3,7 +3,9 @@ export const randomNumber = (min, max) => {
 };
 
 export const formatCurrency = (value) => {
-  return `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  return value === null
+    ? 0
+    : `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " đ";
 };
 
 export const parseCurrency = (value) => {

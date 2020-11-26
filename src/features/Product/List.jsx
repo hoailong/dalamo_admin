@@ -1,6 +1,7 @@
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Avatar, Button, Modal, Space, Table, Tag } from "antd";
 import React from "react";
+import { formatCurrency } from "../../utils/common";
 
 function ListProduct(props) {
   const {
@@ -62,9 +63,10 @@ function ListProduct(props) {
       dataIndex: "price",
       width: "8%",
       sorter: (a, b) => a.price - b.price,
+      render: (price) => formatCurrency(price),
     },
     {
-      title: "Status",
+      title: "Trạng thái",
       dataIndex: "status",
       width: "8%",
       sorter: (a, b) => a.status - b.status,
@@ -76,7 +78,7 @@ function ListProduct(props) {
         ),
     },
     {
-      title: "Action",
+      title: "Hành động",
       width: "15%",
       render: (record) => (
         <Space size="middle">

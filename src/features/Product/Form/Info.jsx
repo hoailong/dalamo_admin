@@ -124,7 +124,7 @@ function Info(props) {
         <Form.Item name="transportingQuantity" label="SL đang giao">
           <Input type={"number"} />
         </Form.Item>
-        <Form.Item name="status" label="Status">
+        <Form.Item name="status" label="Trạng thái">
           <Select>
             <Option value={1}>Active</Option>
             <Option value={0}>UnActive</Option>

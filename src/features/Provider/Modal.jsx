@@ -28,7 +28,14 @@ function ProviderModal(props) {
     if (visible && !provider) form.resetFields();
   }, [visible, provider, form]);
 
-  const initialValues = provider || { name: "", phone: "", email: "", address: "", description: "", status: 1 };
+  const initialValues = provider || {
+    name: "",
+    phone: "",
+    email: "",
+    address: "",
+    description: "",
+    status: 1,
+  };
 
   const onOK = () => {
     form
@@ -53,43 +60,31 @@ function ProviderModal(props) {
         form={form}
         initialValues={initialValues}
       >
-      <Form.Item
-        name="name"
-        label="Tên"
-        rules={[
-          {
-            required: true,
-            message: "Trường này là bắt buộc",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
         <Form.Item
-          name="phone"
-          label="SĐT"
+          name="name"
+          label="Tên"
+          rules={[
+            {
+              required: true,
+              message: "Trường này là bắt buộc",
+            },
+          ]}
         >
           <Input />
         </Form.Item>
-        <Form.Item
-          name="email"
-          label="Email"
-        >
+        <Form.Item name="phone" label="SĐT">
           <Input />
         </Form.Item>
-        <Form.Item
-          name="address"
-          label="Địa chỉ"
-        >
+        <Form.Item name="email" label="Email">
           <Input />
         </Form.Item>
-        <Form.Item
-          name="description"
-          label="Mô tả"
-        >
+        <Form.Item name="address" label="Địa chỉ">
           <Input />
         </Form.Item>
-        <Form.Item name="status" label="Status">
+        <Form.Item name="description" label="Mô tả">
+          <Input />
+        </Form.Item>
+        <Form.Item name="status" label="Trạng thái">
           <Select>
             <Option value={1}>Active</Option>
             <Option value={0}>UnActive</Option>

@@ -4,7 +4,9 @@ import {
   DashboardOutlined,
   EnvironmentOutlined,
   ExperimentOutlined,
+  NumberOutlined,
   RocketOutlined,
+  ShoppingCartOutlined,
   TeamOutlined,
   UserOutlined,
 } from "@ant-design/icons";
@@ -53,8 +55,17 @@ function Sider(props) {
           <Menu.Item key="provider" icon={<RocketOutlined />}>
             <Link to="provider">Nhà cung cấp</Link>
           </Menu.Item>
-          <Menu.Item key="users" icon={<UserOutlined />}>
-            <Link to="users">Tài khoản</Link>
+          <Menu.Item key="customer" icon={<UserOutlined />}>
+            <Link to="customer">Khách hàng</Link>
+          </Menu.Item>
+        </Menu.ItemGroup>
+
+        <Menu.ItemGroup title="">
+          <Menu.Item key="order" icon={<ShoppingCartOutlined />}>
+            <Link to="order">Quản lý đơn hàng</Link>
+          </Menu.Item>
+          <Menu.Item key="order_status" icon={<NumberOutlined />}>
+            <Link to="order_status">Trạng thái đơn hàng</Link>
           </Menu.Item>
         </Menu.ItemGroup>
 

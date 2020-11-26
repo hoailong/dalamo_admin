@@ -2,7 +2,7 @@ import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, Modal, Space, Table, Tag } from "antd";
 import React from "react";
 
-function ListProvider(props) {
+function ListOrderStatus(props) {
   const { dataSource, loading, onEditItem, onDeleteItem, onPageChange } = props;
 
   const handleEditClick = (record) => {
@@ -11,8 +11,8 @@ function ListProvider(props) {
 
   const handleDeleteClick = (record) => {
     Modal.confirm({
-      title: `Xác nhận xoá nhà cung cấp`,
-      content: `Bạn có chắc chắn muốn xoá nhà cung cấp này?`,
+      title: `Xác nhận xoá trạng thái đơn hàng`,
+      content: `Bạn có chắc chắn muốn xoá trạng thái đơn hàng này?`,
       onOk: () => onDeleteItem(record),
       centered: true,
     });
@@ -30,26 +30,14 @@ function ListProvider(props) {
       sorter: (a, b) => a.name.localeCompare(b.name),
     },
     {
-      title: "SĐT",
-      dataIndex: "phone",
-      // defaultSortOrder: "ascend",
-      sorter: (a, b) => a.phone.localeCompare(b.phone),
-    },
-    {
-      title: "Email",
-      dataIndex: "email",
-      // defaultSortOrder: "ascend",
-      sorter: (a, b) => a.email.localeCompare(b.email),
-    },
-    {
-      title: "Địa chỉ",
-      dataIndex: "address",
-      sorter: (a, b) => a.address.length - b.address.length,
-    },
-    {
       title: "Mô tả",
       dataIndex: "description",
-      sorter: (a, b) => a.description.length - b.description.length,
+      sorter: (a, b) => a.description.localeCompare(b.description),
+    },
+    {
+      title: "Mã màu",
+      dataIndex: "color",
+      render: (color) => <Tag color={color}>{color}</Tag>,
     },
     {
       title: "Trạng thái",
@@ -101,4 +89,4 @@ function ListProvider(props) {
   );
 }
 
-export default ListProvider;
+export default ListOrderStatus;
