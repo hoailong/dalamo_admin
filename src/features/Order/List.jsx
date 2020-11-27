@@ -14,8 +14,6 @@ function ListOrder(props) {
     orderStatus,
   } = props;
 
-  console.log(orderStatus);
-
   const handleEditClick = (record) => {
     onEditItem(record);
   };
@@ -55,7 +53,6 @@ function ListOrder(props) {
       sorter: (a, b) => a.idStatus - b.idStatus,
       render: (idStatus) => {
         const status = orderStatus.find((e) => e.id === idStatus);
-        console.log(status);
         return status ? (
           <Tag color={status.color || "#2db7f5"}>{status.name}</Tag>
         ) : (

@@ -11,7 +11,6 @@ function MainLayout(props) {
   const [collapsed, setCollapsed] = useState(false);
   const location = useLocation();
   const activeMenu = location.pathname.slice(1);
-  console.log(activeMenu);
 
   const onCollapseChange = () => {
     setCollapsed(!collapsed);
@@ -25,7 +24,11 @@ function MainLayout(props) {
         <Header collapsed={collapsed} onCollapseChange={onCollapseChange} />
         <Layout.Content className="wrapper-content">
           {/* <Bread /> */}
-          <div className="main-content">{props.children}</div>
+          {activeMenu !== "dashboard" && activeMenu !== "" ? (
+            <div className="main-content">{props.children}</div>
+          ) : (
+            <>{props.children}</>
+          )}
         </Layout.Content>
         <Footer />
       </Layout>

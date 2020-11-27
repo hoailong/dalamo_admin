@@ -1,25 +1,18 @@
 import React, { Component } from "react";
 import { Route } from "react-router";
-import UserLayout from "../../components/Layout/UserLayout";
+import MainLayout from "../../components/Layout";
 
 function UserLayoutRoute({ component: Component, ...rest }) {
-    const isLogin = false;
-    let user = "";
-    if (isLogin) {
-        user = {
-            name: "Sơn Tùng"
-        }
-    }
-    return (
-        <Route
-            {...rest}
-            render={(matchProps) => (
-                <UserLayout user={user}>
-                    <Component {...matchProps} />
-                </UserLayout>
-            )}
-        />
-    );
+  return (
+    <Route
+      {...rest}
+      render={(matchProps) => (
+        <MainLayout>
+          <Component {...matchProps} />
+        </MainLayout>
+      )}
+    />
+  );
 }
 
 export default UserLayoutRoute;

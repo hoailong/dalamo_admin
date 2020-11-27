@@ -2,6 +2,7 @@ import {
   AppstoreOutlined,
   CopyrightOutlined,
   DashboardOutlined,
+  DownloadOutlined,
   EnvironmentOutlined,
   ExperimentOutlined,
   NumberOutlined,
@@ -12,7 +13,7 @@ import {
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import SubMenu from "antd/lib/menu/SubMenu";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Images from "../../../constants/images";
 import "./Sider.scss";
@@ -20,7 +21,18 @@ import "./Sider.scss";
 function Sider(props) {
   const location = useLocation();
   const { collapsed, onCollapseChange } = props;
-  const activeMenu = location.pathname.slice(1);
+  const [activeMenu, setActiveMenu] = useState(location.pathname.slice(1));
+  // let activeMenu = location.pathname.slice(1);
+
+  useEffect(() => {
+    const active = location.pathname.slice(1);
+    setActiveMenu(active);
+  }, [location]);
+
+  useEffect(() => {
+    console.log(activeMenu);
+  }, [activeMenu]);
+
   return (
     <Layout.Sider
       width="250"
@@ -36,7 +48,7 @@ function Sider(props) {
       </div>
       <Menu
         theme="dark"
-        defaultSelectedKeys={[activeMenu !== "" ? activeMenu : "product"]}
+        defaultSelectedKeys={[activeMenu !== "" ? activeMenu : "dashboard"]}
         mode="inline"
       >
         <Menu.ItemGroup>
@@ -57,6 +69,9 @@ function Sider(props) {
           </Menu.Item>
           <Menu.Item key="customer" icon={<UserOutlined />}>
             <Link to="customer">Khách hàng</Link>
+          </Menu.Item>
+          <Menu.Item key="import_product" icon={<DownloadOutlined />}>
+            <Link to="import_product">Nhập kho</Link>
           </Menu.Item>
         </Menu.ItemGroup>
 

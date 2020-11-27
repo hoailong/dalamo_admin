@@ -9,6 +9,7 @@ import brandSlice from "../features/Brand/slice";
 import providerSlice from "../features/Provider/slice";
 import orderSlice from "../features/Order/slice";
 import orderStatusSlice from "../features/OrderStatus/slice";
+import dashboardSlice from "../features/Dashboard/slice";
 
 const rootReducer = combineReducers({
   alerts: alertSlice,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   order: orderSlice,
   orderStatus: orderStatusSlice,
   regions: regionSlice,
+  dashboard: dashboardSlice,
 });
 
 export default rootReducer;
